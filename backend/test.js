@@ -42,30 +42,53 @@ async function compareUserAIPoem() {
       On his perch, a king he reigns,
       As sunlight dances, and morning reigns.
 
-    Format your answer using this JSON schema:
+      Format your answer strictly as a JSON object with no code blocks, no extra text, and no explanations. Use this exact structure:
 
-    {
-      "poem_1": {
-        "creativity": <score>,
-        "originality": <score>,
-        "prose": <score>,
-        "personal_meaning": <score>,
-        "overall": <score>
-      },
-      "poem_2": {
-        "creativity": <score>,
-        "originality": <score>,
-        "prose": <score>,
-        "personal_meaning": <score>,
-        "overall": <score>
+      {
+        "poem_1": {
+          "creativity": <score>,
+          "originality": <score>,
+          "prose": <score>,
+          "personal_meaning": <score>,
+          "overall": <score>
+        },
+        "poem_2": {
+          "creativity": <score>,
+          "originality": <score>,
+          "prose": <score>,
+          "personal_meaning": <score>,
+          "overall": <score>
+        }
       }
-    }
 
-    Provide scores as numerical values between 1 and 10 (1 being poor, 10 being excellent). Only return the JSON response. No extra commentary. 
+      Scores should be numerical values between 1 and 10. Only return this JSON object, and nothing else.
     `;
     
-    const result = await model.generateContent(prompt);
-    console.log(result.response.text());
+    try {
+      const result = await model.generateContent(prompt);
+      const jsonResponse = JSON.parse(result.response.text());
+      printFormattedComparison(jsonResponse);
+  } catch (error) {
+      console.error("An error occurred:", error);
+  }
+}
+
+function printFormattedComparison(data) {
+  console.log("\nComparison of Poem Scores:\n");
+
+  console.log("Poem 1:");
+  console.log(`  Creativity: ${data.poem_1.creativity}`);
+  console.log(`  Originality: ${data.poem_1.originality}`);
+  console.log(`  Prose: ${data.poem_1.prose}`);
+  console.log(`  Personal Meaning: ${data.poem_1.personal_meaning}`);
+  console.log(`  Overall: ${data.poem_1.overall}`);
+
+  console.log("\nPoem 2:");
+  console.log(`  Creativity: ${data.poem_2.creativity}`);
+  console.log(`  Originality: ${data.poem_2.originality}`);
+  console.log(`  Prose: ${data.poem_2.prose}`);
+  console.log(`  Personal Meaning: ${data.poem_2.personal_meaning}`);
+  console.log(`  Overall: ${data.poem_2.overall}`);
 }
 
 compareUserAIPoem(); 
