@@ -1,22 +1,14 @@
-1. create a design for the website 
-    - theme? color palette, font, etc
-    - what are you making it in? 
-    - layout 
-
-2. plan out how the code is gonna be written
-    - what api? 
-    - javascript - anything else? 
-    - hosting the website? 
-
-3. development
-    - split frontend and backend 
-
-
 backend: 
-- decide how to get random images
-    - api? or own collection of images
-    - 
-- what ai api to use? 
-    - chatgpt? copilot? gemini?
-    - ask the ai: which one is better? 
-- connecting the user input (frontend) and the backend 
+
+1. get api working: read  from 'poetry_image.png' and generate a poem based off of it
+
+2. rating based off of the following:
+    - creativity
+    - originality
+    - literacy 
+    - personal meaning
+
+
+ideas for getting poetry inspiration images
+- https://www.reddit.com/r/AccidentalRenaissance/ (good for diverse, but normal images that are inspiring)
+- image APIs 
