@@ -2,10 +2,89 @@
 
 <html>
     <header>
+        <title>Help/Frequently Asked Questions(FAQ)</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <h1 class="helpHeader">Help/FAQ</h1>
 
-        
+        <link rel="stylesheet" href="help.css">
     </header>
+    <body>
+        <section>
+        <div>
+            <p class="question" onclick="toggleAswer(1)">What does this website do?</p>
+            <p id="answer1" class="answer">This website allows you to submit your poem and compares it 
+                to an AI-generated poem based on a picture. </p>
+        </div>
+
+        <div>
+            <p class="question" onclick="toggleAswer(2)">How does the AI generate a poem from a picture?</p>
+            <p id="answer2" class="answer">The AI analyzes the visual elements of the picture and uses natural language processing
+                 to create a poem inspired by the image.</p>
+        </div>
+
+        <div>
+            <p class="question" onclick="toggleAswer(3)">How do I submit my poem?</p>
+            <p id="answer3" class="answer">Just enter your poem in the textbox provided and click on the 'Submit' button. </p>
+        </div>
+
+        <div>
+            <p class="question" onclick="toggleAswer(4)">Is there a word limit for the poem I can submit?</p>
+            <p id="answer4" class="answer"> Yes, the maximum word limit is 100 words, and the poem must be at least 20 words long. </p>
+        </div>
+
+
+        <div>
+            <p class="question" onclick="toggleAswer(5)">Can I submit multiple poems?</p>
+            <p id="answer5" class="answer">  </p>
+        </div>
+
+        <div>
+            <p class="question" onclick="toggleAswer(6)">How do you compare my poem with the AI-generated one?</p>
+            <p id="answer6" class="answer">  </p>
+        </div>
+
+        <div>
+            <p class="question" onclick="toggleAswer(7)">Is there a scoring system for the comparison?</p>
+            <p id="answer7" class="answer">  </p>
+        </div>
+
+        <div>
+            <p class="question" onclick="toggleAswer(8)">Is my poem saved after submission?</p>
+            <p id="answer8" class="answer">  </p>
+        </div>
+
+        <div>
+            <p class="question" onclick="toggleAswer(9)">Can I edit or delete my poem after submitting it?</p>
+            <p id="answer9" class="answer">  </p>
+        </div>
+
+        <div>
+            <p class="question" onclick="toggleAswer(10)">Do you offer any tools to help me improve my poetry?</p>
+            <p id="answer10" class="answer">  </p>
+        </div>
+
+
+
+    </section>
+
+    <script>
+        function toogleAnswer(answerNumber){
+            const answer = document.getElementById('answer' + answerNumber);
+
+            if(answer.style.display == 'none' || answer.style.display == ''){
+                answer.style.display == 'block';
+            }
+            else{
+                answer.style.display = 'none';
+            }
+        }
+    </script>
+    
+
+
+
+    </body>
 
 
 
