@@ -16,7 +16,7 @@ function selectRandomImage() {
   const imageFileName = `image_${rand}.png`;
   const imagePath = `assets/${mood}/${imageFileName}`;
   const clientImagePath = `/${imagePath}`; 
-  
+
   return {
       imagePath,      
       clientImagePath,
@@ -57,6 +57,7 @@ async function generatePoem(imagePath) {
     ]);
 
     const res = result.response.text(); 
+    console.log(res); 
     return res; 
   } catch (error) {
     console.error("An error occurred:", error);

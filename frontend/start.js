@@ -14,6 +14,9 @@ window.onload = function() {
 };
 
 async function fetchComparisonData() {
+    const resultsDiv = document.getElementById("comparison-results");
+    resultsDiv.scrollIntoView({behavior: 'smooth'});
+    
     const userInput = document.getElementById("userpoeminput").value;
     const clientImagePath = window.selectedImagePath; 
     const imagePath = clientImagePath.substring(1); 
@@ -40,12 +43,3 @@ async function fetchComparisonData() {
       console.error("An error occurred while fetching comparison data:", error);
     } 
 } 
-
-/*
-function fetchComparisonData(){
-
-    const resultsDiv = document.getElementById("comparison-results");
-    resultsDiv.innerHTML = "Score:";
-    resultsDiv.scrollIntoView({behavior: 'smooth'});
-}
-*/
