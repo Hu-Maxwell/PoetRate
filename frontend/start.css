@@ -140,3 +140,6 @@ button{
     
 }
 
+#comparison-results {
+    white-space: pre-wrap;
+}

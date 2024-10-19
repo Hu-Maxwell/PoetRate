@@ -83,14 +83,16 @@ function startOver(){
     document.getElementById('comparison-results').innerHTML = '';
 }
 
-function regenerateImage(){
-    const images = ['sunflower.jpg', './assets/happy/image_0.png' , './assets/happy/image_1.png',
-                    './assets/sad/image_0.png', './assets/sad/image_1.png'
-    ];
-    const randomIndex = Math.floor(Math.random()* images.length);
-    const randomImage = images[randomIndex];
-
-    document.getElementById('random-image').src = randomImage;
+function regenerateImage() {
+    fetch('http://127.0.0.1:3000/get-random-image')
+        .then(response => response.json())
+        .then(data => {
+            const clientImagePath = data.imagePath;
+            const imageElement = document.getElementById('random-image');
+            imageElement.src = clientImagePath;
+            window.selectedImagePath = clientImagePath; 
+        })
+        .catch(error => {
+            console.error('Error fetching new image:', error);
+        });
 }
-
-window.onload = regenerateImage;
