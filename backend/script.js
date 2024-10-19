@@ -18,16 +18,17 @@ async function generateRandomImage(mood) {
   return uploadResult; 
 }
 
-// generates poem 
-async function generatePoem() { // generatePoem(mood) 
-  try {
-    const uploadResult = await generateRandomImage("happy");
+/* function to read user's poem after button click
+function getUserPoem() {
+  const userPoemContainer = document.getElementById("userpoeminput"); 
+  return userPoemContainer.value;
+}
+*/ 
 
-    /* unncecessary code that prints something when file is uploaded
-    console.log(
-      `Uploaded file ${uploadResult.file.displayName} as: ${uploadResult.file.uri}`,
-    );
-    */ 
+// generates poem 
+async function generatePoem() { 
+  try {
+    const uploadResult = await generateRandomImage("happy"); // placeholder mood
 
     // initializes the api 
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
@@ -45,15 +46,13 @@ async function generatePoem() { // generatePoem(mood)
     ]);
 
     const res = result.response.text(); 
-    // prints ai prompt into console
-    // console.log(res); 
     return res; 
   } catch (error) {
     console.error("An error occurred:", error);
   }
 }
 
-async function compareUserAIPoem(difficulty) {
+async function compareUserAIPoem() { // compareUserAIPoem(difficulty)
   const AIPoem = await generatePoem(); 
   
   // currently a placeholder user poem until frontend implements input box 
@@ -101,7 +100,6 @@ async function compareUserAIPoem(difficulty) {
   try {
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
     const result = await model.generateContent(prompt);
     const jsonResponse = JSON.parse(result.response.text());
     return jsonResponse; 
@@ -131,6 +129,7 @@ function formatPoemComparison(data) {
   return formatted;
 }
 
+// this part is client-side, should not be in here
 // global variables
 let userWins = 0; 
 let AIWins = 0; 
@@ -138,7 +137,7 @@ let ties = 0;
 let winRate = 0.0; 
 
 // update saveData so that it's saved even after reload
-function saveData(data) {
+function saveDataToFile(data) {
   if (data.poem_1.overall > data.poem_2.overall) {
     userWins++; 
   } 
@@ -147,20 +146,34 @@ function saveData(data) {
   } else {
     ties++; 
   }
-
+  
   const totalGames = userWins + AIWins + ties; 
   winRate = userWins / totalGames; 
 
-  localStorage.setItem("userWins", userWins); 
-  localStorage.setItem("AIWins", AIWins); 
-  localStorage.setItem("ties", ties); 
-  localStorage.setItem("winRate", winRate); 
+  const stats = {
+    userWins,
+    AIWins,
+    ties,
+    winRate
+  };
+
+  // Write stats to a file
+  fs.writeFileSync('poetry-stats.json', JSON.stringify(stats));
 }
 
+async function displayFormattedData() {
+  const data = await compareUserAIPoem(); 
+  const formattedData = formatPoemComparison(data); 
+  
+  console.log(formattedData);
+}
+
+displayFormattedData(); 
 
 module.exports = {
   generatePoem,
   compareUserAIPoem,
   formatPoemComparison,
-  saveData
+  saveDataToFile, 
+  displayFormattedData
 };
