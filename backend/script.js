@@ -18,13 +18,6 @@ async function generateRandomImage(mood) {
   return uploadResult; 
 }
 
-/* function to read user's poem after button click
-function getUserPoem() {
-  const userPoemContainer = document.getElementById("userpoeminput"); 
-  return userPoemContainer.value;
-}
-*/ 
-
 // generates poem 
 async function generatePoem() { 
   try {
@@ -52,7 +45,7 @@ async function generatePoem() {
   }
 }
 
-async function compareUserAIPoem() { // compareUserAIPoem(difficulty)
+async function compareUserAIPoem(userPoem) { // compareUserAIPoem(difficulty)
   const AIPoem = await generatePoem(); 
   
   // currently a placeholder user poem until frontend implements input box 
@@ -60,17 +53,7 @@ async function compareUserAIPoem() { // compareUserAIPoem(difficulty)
   Compare these two poems. 
 
   Poem 1:
-    A cat sits in the light, 
-    sun scattered from the window, 
-    staring deep into the horizon. 
-
-    He sits like a burrito bun, 
-    sitting like there's no fun, 
-    as if he's done. 
-
-    In the somber afternoon, 
-    in the cold June, 
-    he waits for the moon.
+    ${userPoem}
 
   Poem 2: 
     ${AIPoem}
@@ -157,18 +140,16 @@ function saveDataToFile(data) {
     winRate
   };
 
-  // Write stats to a file
   fs.writeFileSync('poetry-stats.json', JSON.stringify(stats));
 }
 
+// test function
 async function displayFormattedData() {
   const data = await compareUserAIPoem(); 
   const formattedData = formatPoemComparison(data); 
   
   console.log(formattedData);
 }
-
-displayFormattedData(); 
 
 module.exports = {
   generatePoem,

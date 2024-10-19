@@ -35,19 +35,7 @@
     <!-- temp div to test things--> 
     <div id="comparison-results"> </div>
 
-    <script>
-        async function fetchComparisonData() {
-            try {
-                const response = await fetch('http://127.0.0.1:3000/get-comparison');
-                const data = await response.text(); // Fetch as plain text
-
-                const resultsContainer = document.getElementById('comparison-results');
-                resultsContainer.textContent = data;
-            } catch (error) {
-                console.error("An error occurred while fetching comparison data:", error);
-            } 
-        }
-    </script>
+    <script src="start.js"></script>
     </div>
 
 </body>
