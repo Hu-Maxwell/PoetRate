@@ -1,9 +1,12 @@
 backend: 
+    - add more images for inspiration and sort them into moods 
+    - implement randomization of images
+
     ideas for getting poetry inspiration images
     - https://www.reddit.com/r/AccidentalRenaissance/ (good for diverse, but normal images that are inspiring)
     - image APIs 
 
-    implement:
+frontend: 
     - timer 
 
     - customization 
