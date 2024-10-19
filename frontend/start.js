@@ -80,7 +80,9 @@ function startOver(){
 }
 
 function regenerateImage(){
-    const images = ['sunflower.jpg', './assets/happy/image_0.png' , './assets/happy/image_1.png'];
+    const images = ['sunflower.jpg', './assets/happy/image_0.png' , './assets/happy/image_1.png',
+                    './assets/sad/image_0.png', './assets/sad/image_1.png'
+    ];
     const randomIndex = Math.floor(Math.random()* images.length);
     const randomImage = images[randomIndex];
 
