@@ -59,15 +59,34 @@ function getAIPoem() {
 
 function compareUserAIPoem(userPoem, AIPoem) {
     const prompt = `
-    Compare the following poems and rate them from 1 to 10. Provide feedback for each poem.
+    Compare these two poems. 
+
     Poem 1 (User's Poem): 
     "${userPoem}"
     
     Poem 2 (AI's Poem): 
     "${AIPoem}"
     
-    Which poem is better? Rate based off the following criteria: 
-    creativity, originality, prose, personal meaning. Explain your choice.
+    Format your answer as a JSON object and nothing else. Ensure the JSON follows this exact structure:
+
+    {
+      "poem_1": {
+        "creativity": <score>,
+        "originality": <score>,
+        "prose": <score>,
+        "personal_meaning": <score>,
+        "overall": <score>
+      },
+      "poem_2": {
+        "creativity": <score>,
+        "originality": <score>,
+        "prose": <score>,
+        "personal_meaning": <score>,
+        "overall": <score>
+      }
+    }
+
+    Provide scores as numerical values between 1 and 10 (1 being poor, 10 being excellent). Only return the JSON response. No extra commentary. 
     `;
     
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
