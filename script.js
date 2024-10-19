@@ -92,13 +92,25 @@ function compareUserAIPoem(userPoem, AIPoem) {
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    return model.generateContent([prompt])
-        .then(result => result.response.text())
-        .catch(error => {
-            console.error("An error occurred while comparing poems:", error);
-            return null;
-        });
+    try {
+        const result = await model.generateContent([prompt]);
+        const responseText = result.response.text();
+        
+        // Parse the JSON response from the AI
+        const comparisonResult = JSON.parse(responseText);
+        
+        // Now you can access scores from the parsed JSON
+        console.log("Poem 1 Scores:", comparisonResult.poem_1);
+        console.log("Poem 2 Scores:", comparisonResult.poem_2);
+
+        return comparisonResult;
+    } catch (error) {
+        console.error("An error occurred while comparing poems:", error);
+        return null;
+    }
 }
+
+
 */ 
 
 // -----------------------------------------------------
