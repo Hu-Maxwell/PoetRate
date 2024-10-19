@@ -153,5 +153,6 @@ function saveData(data) {
 module.exports = {
   generatePoem,
   compareUserAIPoem,
-  formatPoemComparison
+  formatPoemComparison,
+  saveData
 };
