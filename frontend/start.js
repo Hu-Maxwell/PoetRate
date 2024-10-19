@@ -22,3 +22,10 @@ async function fetchComparisonData() {
         console.error("An error occurred while fetching comparison data:", error);
     } 
 }
+
+function fetchComparisonData(){
+
+    const resultsDiv = document.getElementById("comparison-results");
+    resultsDiv.innerHTML = "Score:";
+    resultsDiv.scrollIntoView({behavior: 'smooth'});
+}

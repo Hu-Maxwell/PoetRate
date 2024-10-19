@@ -1,0 +1,19 @@
+.helpHeader{
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p.question{
+    cursor: pointer;
+    font-weight: bold;
+    margin: 20px;
+
+}
+
+#answer{
+    display: none;
+    margin: 10px 0;
+    font-size: 13px;
+    color: black;
+}
