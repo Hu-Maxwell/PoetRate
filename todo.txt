@@ -1,25 +1,18 @@
 backend: 
+    - add more images for inspiration and sort them into moods 
+    - implement randomization of images
 
-1. get api working: read  from 'poetry_image.png' and generate a poem based off of it
+    ideas for getting poetry inspiration images
+    - https://www.reddit.com/r/AccidentalRenaissance/ (good for diverse, but normal images that are inspiring)
+    - image APIs 
 
-2. rating based off of the following:
-    - creativity
-    - originality
-    - literacy 
-    - personal meaning
+frontend: 
+    - timer 
 
+    - customization 
+        - choose theme (sad, happy, etc)
+        - difficulty level
 
-ideas for getting poetry inspiration images
-- https://www.reddit.com/r/AccidentalRenaissance/ (good for diverse, but normal images that are inspiring)
-- image APIs 
-
-implement:
-- timer 
-
-- customization 
-    - choose theme (sad, happy, etc)
-    - difficulty level
-
-- user profile 
-    - stats
-    - winrate
+    - user profile 
+        - stats
+        - winrate
