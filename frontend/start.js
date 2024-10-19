@@ -61,8 +61,7 @@ function fetchComparisonData(){
 
     const resultsDiv = document.getElementById("comparison-results");
     resultsDiv.innerHTML = ` 
-    <div id="comparison-results"> </div>
-    <div class="bigbox"></div>
+    <div class="bigbox"> INSERT SCORE HERE </div>
     `;
     resultsDiv.scrollIntoView({behavior: 'smooth'});
 
