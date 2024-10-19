@@ -12,14 +12,8 @@ window.onload = function() {
         });
 };
 
-async function fetchAIPoem() {
-  
-}
-
 async function fetchComparisonData() {
-    const resultsDiv = document.getElementById("comparison-results");
-    resultsDiv.scrollIntoView({behavior: 'smooth'});
-    
+
     const userInput = document.getElementById("userpoeminput").value;
     const clientImagePath = window.selectedImagePath; 
     const imagePath = clientImagePath.substring(1); 
@@ -61,6 +55,7 @@ const observer = new IntersectionObserver((entries) => {
         }
         });
     });
+
 
 function fetchComparisonData(){
 
