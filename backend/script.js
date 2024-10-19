@@ -65,7 +65,8 @@ async function generatePoem(imagePath) {
 }
 
 async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(difficulty)
-  const AIPoem = await generatePoem(imagePath);
+  let AIPoem = '';
+  AIPoem = await generatePoem(imagePath);
   
   const prompt = `
   Compare these two poems. 
@@ -103,7 +104,10 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(prompt);
     const jsonResponse = JSON.parse(result.response.text());
-    return jsonResponse; 
+    return {
+      comparisonResults: jsonResponse,
+      AIPoem: AIPoem,
+    }; 
   } catch (error) {
     console.error("An error occurred:", error);
     return null;

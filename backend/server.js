@@ -49,14 +49,17 @@ function createServer() {
             serveStaticFile(res, sunflowerImage, 'image/jpg');
             
         } else if (req.url === '/start.js' && req.method === 'GET') {
+            // serve start.js file
             const startJsPath = path.join(__dirname, '../frontend/start.js');
             serveStaticFile(res, startJsPath, 'application/javascript');
 
         } else if (req.url === '/help.html' && req.method === 'GET') {
+            // serve help.html 
             const helpHtml = path.join(__dirname, '../frontend/help.html');
             serveStaticFile(res, helpHtml, 'text/html');
 
         } else if (req.url === '/get-comparison' && req.method === 'POST') {
+            // returns data comparison data
             let body = '';
 
             req.on('data', chunk => {
@@ -74,11 +77,15 @@ function createServer() {
                     console.log("Received image path:", imagePath);
 
                     const comparisonResults = await compareUserAIPoem(userPoem, imagePath);
-                    const formattedData = formatPoemComparison(comparisonResults);
+                    const formattedData = formatPoemComparison(comparisonResults.comparisonResults);
 
                     res.statusCode = 200;
-                    res.setHeader('Content-Type', 'text/plain');
-                    res.end(formattedData);
+                    res.setHeader('Content-Type', 'application/json');
+                    res.end(JSON.stringify({
+                        formattedData: formattedData,
+                        AIPoem: comparisonResults.AIPoem
+                    }));
+        
                 } catch (error) {
                     console.error("An error occurred while processing the comparison:", error);
                     res.statusCode = 500;
@@ -86,12 +93,14 @@ function createServer() {
                 }
             });
         } else if (req.url === '/get-random-image' && req.method === 'GET') {
+            // serve randomly generated image
             const { imagePath, clientImagePath } = selectRandomImage();
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({ imagePath: clientImagePath }));
         
         } else if (req.url.startsWith('/assets/') && req.method === 'GET') {
+            // serve assets folder
             const filePath = path.join(__dirname, '../frontend', req.url);
             const extname = String(path.extname(filePath)).toLowerCase();
             const mimeTypes = {
@@ -100,6 +109,16 @@ function createServer() {
             };
             const contentType = mimeTypes[extname] || 'application/octet-stream';
             serveStaticFile(res, filePath, contentType);
+        
+        } else if (req.url === '/app.js' && req.method === 'GET') {
+            // serve app.js file
+            const startJsPath = path.join(__dirname, '../frontend/app.js');
+            serveStaticFile(res, startJsPath, 'application/javascript');
+        
+        } else if (req.url === '/help.css' && req.method === 'GET') {
+            // serve start.css
+            const startStyle = path.join(__dirname, '../frontend/help.css');
+            serveStaticFile(res, startStyle, 'text/css');
         
         } else {
             res.statusCode = 404;

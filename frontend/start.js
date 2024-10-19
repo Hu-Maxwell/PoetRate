@@ -5,13 +5,16 @@ window.onload = function() {
             const clientImagePath = data.imagePath;
             const imageElement = document.getElementById('random-image');
             imageElement.src = clientImagePath;
-            // Store the imagePath for sending to server
             window.selectedImagePath = clientImagePath;
         })
         .catch(error => {
             console.error('Error fetching random image:', error);
         });
 };
+
+async function fetchAIPoem() {
+  
+}
 
 async function fetchComparisonData() {
     const resultsDiv = document.getElementById("comparison-results");
@@ -33,10 +36,14 @@ async function fetchComparisonData() {
         })
       });
   
-      const data = await response.text(); 
+      const data = await response.json(); 
   
       const resultsContainer = document.getElementById('comparison-results');
-      resultsContainer.textContent = data;
+      resultsContainer.textContent = data.formattedData;
+
+      const aiPoemContainer = document.getElementById('AI-poem');
+      aiPoemContainer.textContent = data.AIPoem;
+
         
     } catch (error) {
       console.error("An error occurred while fetching comparison data:", error);
