@@ -75,6 +75,7 @@ function createServer() {
 
                     const comparisonResults = await compareUserAIPoem(userPoem, imagePath);
                     const formattedData = formatPoemComparison(comparisonResults);
+                    
 
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'text/plain');
