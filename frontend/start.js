@@ -72,14 +72,6 @@ async function scrollDown(){
     setTimeout(function(){
         const hiddenElements = resultsDiv.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
-
-        const additionalScroll = 300;
-        const scrollInterval = setInterval(() => {
-            window.scrollBy(0,10);
-            if(window.scrollY >= additionalScroll){
-                clearInterval(scrollInterval);
-            }
-        }, 30);
         
     },2000);
 
@@ -92,7 +84,9 @@ function startOver(){
 }
 
 function regenerateImage(){
-    const images = ['sunflower.jpg', 'rose.jpg'];
+    const images = ['sunflower.jpg', './assets/happy/image_0.png' , './assets/happy/image_1.png',
+                    './assets/sad/image_0.png', './assets/sad/image_1.png'
+    ];
     const randomIndex = Math.floor(Math.random()* images.length);
     const randomImage = images[randomIndex];
 
