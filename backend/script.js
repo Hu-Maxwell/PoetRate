@@ -1,27 +1,40 @@
 require('dotenv').config();
 
+const fs = require('fs');
+const path = require('path'); 
+
 const { GoogleAIFileManager } = require("@google/generative-ai/server");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const fileManager = new GoogleAIFileManager(process.env.API_KEY);
 
-async function generateRandomImage(mood) {
-  const rand = Math.floor(Math.random() * 2); 
-  const uploadResult = await fileManager.uploadFile(
-    `../assets/${mood}/image_${rand}.png`,
-    {
-      mimeType: "image/png",    
-      displayName: "Inspiration for Poetry", 
-    },
-  );
+function selectRandomImage() {
+  const mood = "happy"; 
+  const totalImages = 2; 
 
-  return uploadResult; 
+  const rand = Math.floor(Math.random() * totalImages);
+  const imagePath = `assets/${mood}/image_${rand}.png`; 
+
+  return imagePath;
 }
 
 // generates poem 
-async function generatePoem() { 
+async function generatePoem(imagePath) { 
   try {
-    const uploadResult = await generateRandomImage("happy"); // placeholder mood
+    const fsImagePath = path.join(__dirname, '..', 'frontend', imagePath);
+    console.log('fsImagePath:', fsImagePath);
+
+    if (!fs.existsSync(fsImagePath)) {
+      throw new Error(`File not found at path: ${fsImagePath}`);
+    }
+
+    const uploadResult = await fileManager.uploadFile(
+        fsImagePath,
+        {
+            mimeType: "image/png",    
+            displayName: "Inspiration for Poetry", 
+        },
+    );
 
     // initializes the api 
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
@@ -45,10 +58,9 @@ async function generatePoem() {
   }
 }
 
-async function compareUserAIPoem(userPoem) { // compareUserAIPoem(difficulty)
-  const AIPoem = await generatePoem(); 
+async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(difficulty)
+  const AIPoem = await generatePoem(imagePath);
   
-  // currently a placeholder user poem until frontend implements input box 
   const prompt = `
   Compare these two poems. 
 
@@ -156,5 +168,6 @@ module.exports = {
   compareUserAIPoem,
   formatPoemComparison,
   saveDataToFile, 
-  displayFormattedData
+  displayFormattedData,
+  selectRandomImage
 };

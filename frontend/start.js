@@ -1,13 +1,16 @@
 async function fetchComparisonData() {
     const userInput = document.getElementById("userpoeminput").value;
+    imagePath = selectRandomImage(); 
 
     try {
         const response = await fetch('http://127.0.0.1:3000/get-comparison', {
             method: 'POST',
             headers: {
-                'Content-Type' : 'text/plain',
+                'Content-Type': 'application/json',
             },
-            body: userInput
+            body: JSON.stringify({
+                poem: userInput,
+            })
         });
 
         const data = await response.text(); 

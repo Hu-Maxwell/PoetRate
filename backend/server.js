@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path'); 
 
-const { compareUserAIPoem } = require('./script'); 
-const { formatPoemComparison } = require('./script'); 
+const { compareUserAIPoem, formatPoemComparison, selectRandomImage } = require('./script');
 
 function serveStaticFile(res, filePath, contentType) {
     fs.readFile(filePath, (err, data) => {
@@ -58,17 +57,23 @@ function createServer() {
             serveStaticFile(res, helpHtml, 'text/html');
 
         } else if (req.url === '/get-comparison' && req.method === 'POST') {
-            let userPoem = '';
+            let body = '';
 
             req.on('data', chunk => {
-                userPoem += chunk.toString(); 
+                body += chunk.toString(); 
             });
 
             req.on('end', async () => {
-                console.log("Received user poem:", userPoem); 
+                console.log("Received body:", body); 
 
                 try {
-                    const comparisonResults = await compareUserAIPoem(userPoem);
+                    const parsedBody = JSON.parse(body);
+                    const userPoem = parsedBody.poem;
+
+                    const imagePath = selectRandomImage();
+                    console.log("Received image path:", imagePath);
+
+                    const comparisonResults = await compareUserAIPoem(userPoem, imagePath);
                     const formattedData = formatPoemComparison(comparisonResults);
 
                     res.statusCode = 200;
