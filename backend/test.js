@@ -1,5 +1,4 @@
 // this file is for testing a function only
-
 require('dotenv').config();
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -9,7 +8,10 @@ const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
 });
 
-async function compareUserAIPoem() {
+// "${userPoem}"
+// "${AIPoem}"
+
+async function compareUserAIPoem(difficulty) {
     const prompt = `
     Compare these two poems. 
 
@@ -67,28 +69,13 @@ async function compareUserAIPoem() {
     try {
       const result = await model.generateContent(prompt);
       const jsonResponse = JSON.parse(result.response.text());
-      printFormattedComparison(jsonResponse);
-  } catch (error) {
+      return jsonResponse; 
+    } catch (error) {
       console.error("An error occurred:", error);
-  }
+      return null;
+    }
 }
 
-function printFormattedComparison(data) {
-  console.log("\nComparison of Poem Scores:\n");
-
-  console.log("Poem 1:");
-  console.log(`  Creativity: ${data.poem_1.creativity}`);
-  console.log(`  Originality: ${data.poem_1.originality}`);
-  console.log(`  Prose: ${data.poem_1.prose}`);
-  console.log(`  Personal Meaning: ${data.poem_1.personal_meaning}`);
-  console.log(`  Overall: ${data.poem_1.overall}`);
-
-  console.log("\nPoem 2:");
-  console.log(`  Creativity: ${data.poem_2.creativity}`);
-  console.log(`  Originality: ${data.poem_2.originality}`);
-  console.log(`  Prose: ${data.poem_2.prose}`);
-  console.log(`  Personal Meaning: ${data.poem_2.personal_meaning}`);
-  console.log(`  Overall: ${data.poem_2.overall}`);
-}
-
-compareUserAIPoem(); 
+module.exports = {
+  compareUserAIPoem
+};
