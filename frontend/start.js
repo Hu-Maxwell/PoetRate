@@ -1,5 +1,23 @@
+window.onload = function() {
+    fetch('http://127.0.0.1:3000/get-random-image')
+        .then(response => response.json())
+        .then(data => {
+            const clientImagePath = data.imagePath;
+            const imageElement = document.getElementById('random-image');
+            imageElement.src = clientImagePath;
+            // Store the imagePath for sending to server
+            window.selectedImagePath = clientImagePath;
+        })
+        .catch(error => {
+            console.error('Error fetching random image:', error);
+        });
+};
+
 async function fetchComparisonData() {
     const userInput = document.getElementById("userpoeminput").value;
+    const clientImagePath = window.selectedImagePath; 
+    const imagePath = clientImagePath.substring(1); 
+    
   
     try {
       const response = await fetch('http://127.0.0.1:3000/get-comparison', {
@@ -9,6 +27,7 @@ async function fetchComparisonData() {
         },
         body: JSON.stringify({
           poem: userInput,
+          imagePath: imagePath
         })
       });
   
@@ -21,6 +40,7 @@ async function fetchComparisonData() {
       console.error("An error occurred while fetching comparison data:", error);
     } 
 } 
+
 /*
 function fetchComparisonData(){
 

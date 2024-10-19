@@ -13,9 +13,14 @@ function selectRandomImage() {
   const totalImages = 2; 
 
   const rand = Math.floor(Math.random() * totalImages);
-  const imagePath = `assets/${mood}/image_${rand}.png`; 
-
-  return imagePath;
+  const imageFileName = `image_${rand}.png`;
+  const imagePath = `assets/${mood}/${imageFileName}`;
+  const clientImagePath = `/${imagePath}`; 
+  
+  return {
+      imagePath,      
+      clientImagePath,
+  };
 }
 
 // generates poem 

@@ -69,13 +69,12 @@ function createServer() {
                 try {
                     const parsedBody = JSON.parse(body);
                     const userPoem = parsedBody.poem;
+                    const imagePath = parsedBody.imagePath;
 
-                    const imagePath = selectRandomImage();
                     console.log("Received image path:", imagePath);
 
                     const comparisonResults = await compareUserAIPoem(userPoem, imagePath);
                     const formattedData = formatPoemComparison(comparisonResults);
-                    
 
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'text/plain');
@@ -86,6 +85,22 @@ function createServer() {
                     res.end("An error occurred while processing the comparison.");
                 }
             });
+        } else if (req.url === '/get-random-image' && req.method === 'GET') {
+            const { imagePath, clientImagePath } = selectRandomImage();
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ imagePath: clientImagePath }));
+        
+        } else if (req.url.startsWith('/assets/') && req.method === 'GET') {
+            const filePath = path.join(__dirname, '../frontend', req.url);
+            const extname = String(path.extname(filePath)).toLowerCase();
+            const mimeTypes = {
+                '.png': 'image/png',
+                '.jpg': 'image/jpg',
+            };
+            const contentType = mimeTypes[extname] || 'application/octet-stream';
+            serveStaticFile(res, filePath, contentType);
+        
         } else {
             res.statusCode = 404;
             res.end("Page Not Found");
