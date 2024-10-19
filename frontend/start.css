@@ -97,6 +97,48 @@ button{
     border-radius: 10px;
 }
 
+.container{
+    width: 100%;
+    height: 100vh;
+}
+
+#comparison-results{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    background-color: linear-gradient(454deg, );
+}
+
+.hidden{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5 ease-out, transform 0.5 ease-out
+}
+
+.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bigbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 500px;
+    height: 300px;
+    background-color:#FDEFE4;
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 0 4px 15 px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+
 /* backend added this so the results would display in multiple lines*/ 
 #AI-poem {
     white-space: pre-wrap;

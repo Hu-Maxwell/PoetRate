@@ -49,3 +49,40 @@ async function fetchComparisonData() {
       console.error("An error occurred while fetching comparison data:", error);
     } 
 } 
+
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        } 
+        else{
+            entry.target.classList.remove('show');
+        }
+        });
+    });
+
+function fetchComparisonData(){
+
+    const resultsDiv = document.getElementById("comparison-results");
+    resultsDiv.innerHTML = ` 
+    <div id="comparison-results"> </div>
+    <div class="bigbox"></div>
+    `;
+    resultsDiv.scrollIntoView({behavior: 'smooth'});
+
+    setTimeout(function(){
+        const hiddenElements = resultsDiv.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        const additionalScroll = 300;
+        const scrollInterval = setInterval(() => {
+            window.scrollBy(0,10);
+            if(window.scrollY >= additionalScroll){
+                clearInterval(scrollInterval);
+            }
+        }, 30);
+        
+    },2000);
+
+}
