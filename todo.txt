@@ -10,4 +10,13 @@
 
 3. development
     - split frontend and backend 
-    - idk 
+
+
+backend: 
+- decide how to get random images
+    - api? or own collection of images
+    - 
+- what ai api to use? 
+    - chatgpt? copilot? gemini?
+    - ask the ai: which one is better? 
+- connecting the user input (frontend) and the backend 
