@@ -1,5 +1,8 @@
 body{
     background-color: #647E7D;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .main-container{
@@ -7,31 +10,37 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 
 #userpoeminput {
     width: 300px;
-    height: 500px;
-    display:flex;
-    align-items: flex-end;
+    height: 390px;
     background-color: #FDEFE4;
     color: black;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     padding: 10px;
     caret-color: black;
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: Arial, Helvetica, sans-serif;
+    transition: box-shadow 0.3 ease;
     justify-content: flex-start;
+    resize: none;
+    overflow-y: auto;
+}
+
+#userpoeminput:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #userpoeminput::placeholder{
-    display: flex;
-    align-self: flex-start;
     color: gray;
     font-size: 15px;
-    line-height: 1.2;
+    line-height: 1.5;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -46,7 +55,10 @@ div.text_input{
 
 
 img.generated_image{
-    width: 500px; ;
+    width: 500px; 
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 25px;
 }
 
 
@@ -54,6 +66,7 @@ img.generated_image{
     display:flex;
     justify-content: space-evenly;
     align-items: center;
+    gap: 30px;
 }
 
 button{
