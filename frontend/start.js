@@ -20,7 +20,6 @@ async function fetchComparisonData() {
     const userInput = document.getElementById("userpoeminput").value;
     const clientImagePath = window.selectedImagePath; 
     const imagePath = clientImagePath.substring(1); 
-    
   
     try {
       const response = await fetch('http://127.0.0.1:3000/get-comparison', {
