@@ -1,0 +1,13 @@
+1. create a design for the website 
+    - theme? color palette, font, etc
+    - what are you making it in? 
+    - layout 
+
+2. plan out how the code is gonna be written
+    - what api? 
+    - javascript - anything else? 
+    - hosting the website? 
+
+3. development
+    - split frontend and backend 
+    - idk 
