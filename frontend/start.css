@@ -96,3 +96,12 @@ button{
     cursor: pointer;
     border-radius: 10px;
 }
+
+/* backend added this so the results would display in multiple lines*/ 
+#AI-poem {
+    white-space: pre-wrap;
+}
+
+#comparison-results {
+    white-space: pre-wrap;
+}
