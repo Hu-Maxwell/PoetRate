@@ -12,3 +12,14 @@ backend:
 ideas for getting poetry inspiration images
 - https://www.reddit.com/r/AccidentalRenaissance/ (good for diverse, but normal images that are inspiring)
 - image APIs 
+
+implement:
+- timer 
+
+- customization 
+    - choose theme (sad, happy, etc)
+    - difficulty level
+
+- user profile 
+    - stats
+    - winrate

@@ -41,7 +41,7 @@ async function generatePoem() {
 generatePoem();
 
 
-
+// -----------------------------------------------------
 // js stuff: 
 
 /* 
@@ -57,30 +57,37 @@ function getAIPoem() {
     code is above
 }
 
-function compareUserAIPoem() {
-    let userPoem = getUserPoem(); 
-    let AIPoem = getAIPoem(); 
+function compareUserAIPoem(userPoem, AIPoem) {
+    const prompt = `
+    Compare the following poems and rate them from 1 to 10. Provide feedback for each poem.
+    Poem 1 (User's Poem): 
+    "${userPoem}"
     
-    prompt = "Compare the following poems. Poem 1: \n" + userPoem "\n Poem 2: \n" + AIPoem; 
+    Poem 2 (AI's Poem): 
+    "${AIPoem}"
+    
+    Which poem is better? Rate based off the following criteria: 
+    creativity, originality, prose, personal meaning. Explain your choice.
+    `;
+    
+    const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    do ai api stuff
-    return the results
+    return model.generateContent([prompt])
+        .then(result => result.response.text())
+        .catch(error => {
+            console.error("An error occurred while comparing poems:", error);
+            return null;
+        });
 }
-
 */ 
-// get input from webpage 
-// concatenate the input from gemini and user into one string, prompting it to rate it 
-// display it onto the frontend 
 
-
-
+// -----------------------------------------------------
 // server stuff:
 
 /*
-// Import the http module
 const http = require('http');
 
-// Define the hostname and port
 const hostname = '127.0.0.1';
 const port = 3000;
 
