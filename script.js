@@ -1,41 +1,73 @@
-// Make sure to include these imports:
-/*
-import { GoogleAIFileManager } from "@google/generative-ai/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+require('dotenv').config();
+
+const { GoogleAIFileManager } = require("@google/generative-ai/server");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const fileManager = new GoogleAIFileManager(process.env.API_KEY);
 
-const uploadResult = await fileManager.uploadFile(
-    `${mediaPath}/image_1.png`, 
-    {
-      mimeType: "image/png",    
-      displayName: "Inspiration for Poetry", 
-    },
-  );
+async function generatePoem() {
+  try {
+    const uploadResult = await fileManager.uploadFile(
+      `assets/image_1.png`, 
+      {
+        mimeType: "image/png",    
+        displayName: "Inspiration for Poetry", 
+      },
+    );
 
-// View the response.
-console.log(
-  `Uploaded file ${uploadResult.file.displayName} as: ${uploadResult.file.uri}`,
-);
+    console.log(
+      `Uploaded file ${uploadResult.file.displayName} as: ${uploadResult.file.uri}`,
+    );
 
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-const result = await model.generateContent([
-  "Write a poem inspired by this image.",
-  {
-    fileData: {
-      fileUri: uploadResult.file.uri,
-      mimeType: uploadResult.file.mimeType,
-    },
-  },
-]);
+    const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-console.log(result.response.text());
-*/ 
+    const result = await model.generateContent([
+      "Write a poem inspired by this image.",
+      {
+        fileData: {
+          fileUri: uploadResult.file.uri,
+          mimeType: uploadResult.file.mimeType,
+        },
+      },
+    ]);
+
+    console.log(result.response.text());
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+}
+
+generatePoem();
 
 
 
 // js stuff: 
+
+/* 
+
+function getUserPoem() {
+    poemContainer = document.getElementById("poem-input");
+    poem = poemContainer.value;
+    
+    return poem; 
+}
+
+function getAIPoem() {
+    code is above
+}
+
+function compareUserAIPoem() {
+    let userPoem = getUserPoem(); 
+    let AIPoem = getAIPoem(); 
+    
+    prompt = "Compare the following poems. Poem 1: \n" + userPoem "\n Poem 2: \n" + AIPoem; 
+
+    do ai api stuff
+    return the results
+}
+
+*/ 
 // get input from webpage 
 // concatenate the input from gemini and user into one string, prompting it to rate it 
 // display it onto the frontend 
