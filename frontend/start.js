@@ -80,3 +80,19 @@ function fetchComparisonData(){
     },2000);
 
 }
+
+function startOver(){
+    document.getElementById('userpoeminput').value = '';
+    regenerateImage();
+    document.getElementById('comparison-results').innerHTML = '';
+}
+
+function regenerateImage(){
+    const images = ['sunflower.jpg', 'rose.jpg'];
+    const randomIndex = Math.floor(Math.random()* images.length);
+    const randomImage = images[randomIndex];
+
+    document.getElementById('random-image').src = randomImage;
+}
+
+window.onload = regenerateImage;
