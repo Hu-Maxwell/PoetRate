@@ -5,16 +5,23 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const fileManager = new GoogleAIFileManager(process.env.API_KEY);
 
+async function generateRandomImage(mood) {
+  const rand = Math.floor(Math.random() * 2); 
+  const uploadResult = await fileManager.uploadFile(
+    `../assets/${mood}/image_${rand}.png`,
+    {
+      mimeType: "image/png",    
+      displayName: "Inspiration for Poetry", 
+    },
+  );
+
+  return uploadResult; 
+}
+
 // generates poem 
 async function generatePoem() { // generatePoem(mood) 
   try {
-    const uploadResult = await fileManager.uploadFile(
-      `../assets/image_1.png`, // `../assets/${mood}/image_${rand}.png`
-      {
-        mimeType: "image/png",    
-        displayName: "Inspiration for Poetry", 
-      },
-    );
+    const uploadResult = await generateRandomImage("happy");
 
     /* unncecessary code that prints something when file is uploaded
     console.log(
@@ -149,6 +156,7 @@ function saveData(data) {
   localStorage.setItem("ties", ties); 
   localStorage.setItem("winRate", winRate); 
 }
+
 
 module.exports = {
   generatePoem,
