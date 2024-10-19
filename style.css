@@ -1,0 +1,21 @@
+body{
+    background-color: #647E7D;
+}
+
+.main{
+    font-size: 120px;
+    font-family:"Playfair";
+    text-align: center;
+    color: #FDEFE4;
+    font-weight:bold;
+}
+
+.main .button{
+    font-size: 20px;
+    background-color: #C38590;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
