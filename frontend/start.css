@@ -95,21 +95,21 @@ button{
     padding: 10px 25px;
     cursor: pointer;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-.container{
+.result-container{
     width: 100%;
     height: 100vh;
+    margin-top: 40px;
 }
 
 #comparison-results{
-    width: 100%;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
-    background-color: linear-gradient(454deg, );
+    gap: 70px;
+    background-color: linear-gradient(454deg,#FDEFE4, #C38590 );
 }
 
 .hidden{
@@ -124,24 +124,12 @@ button{
 }
 
 .bigbox{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
     width: 500px;
     height: 300px;
     background-color:#FDEFE4;
-    border: 3px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     box-shadow: 0 4px 15 px rgba(0, 0, 0, 0.1);
     
 }
 
-/* backend added this so the results would display in multiple lines*/ 
-#AI-poem {
-    white-space: pre-wrap;
-}
-
-#comparison-results {
-    white-space: pre-wrap;
-}
