@@ -49,6 +49,7 @@ async function generatePoem() { // generatePoem(mood)
 async function compareUserAIPoem(difficulty) {
   const AIPoem = await generatePoem(); 
   
+  // currently a placeholder user poem until frontend implements input box 
   const prompt = `
   Compare these two poems. 
 
@@ -121,6 +122,32 @@ function formatPoemComparison(data) {
   formatted += `  Overall: ${data.poem_2.overall}\n`;
 
   return formatted;
+}
+
+// global variables
+let userWins = 0; 
+let AIWins = 0; 
+let ties = 0; 
+let winRate = 0.0; 
+
+// update saveData so that it's saved even after reload
+function saveData(data) {
+  if (data.poem_1.overall > data.poem_2.overall) {
+    userWins++; 
+  } 
+  else if (data.poem_1.overall < data.poem_2.overall) {
+    AIWins++; 
+  } else {
+    ties++; 
+  }
+
+  const totalGames = userWins + AIWins + ties; 
+  winRate = userWins / totalGames; 
+
+  localStorage.setItem("userWins", userWins); 
+  localStorage.setItem("AIWins", AIWins); 
+  localStorage.setItem("ties", ties); 
+  localStorage.setItem("winRate", winRate); 
 }
 
 module.exports = {
