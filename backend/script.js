@@ -59,27 +59,58 @@ function getAIPoem() {
 
 function compareUserAIPoem(userPoem, AIPoem) {
     const prompt = `
-    Compare the following poems and rate them from 1 to 10. Provide feedback for each poem.
+    Compare these two poems. 
+
     Poem 1 (User's Poem): 
     "${userPoem}"
     
     Poem 2 (AI's Poem): 
     "${AIPoem}"
     
-    Which poem is better? Rate based off the following criteria: 
-    creativity, originality, prose, personal meaning. Explain your choice.
+    Format your answer as a JSON object and nothing else. Ensure the JSON follows this exact structure:
+
+    {
+      "poem_1": {
+        "creativity": <score>,
+        "originality": <score>,
+        "prose": <score>,
+        "personal_meaning": <score>,
+        "overall": <score>
+      },
+      "poem_2": {
+        "creativity": <score>,
+        "originality": <score>,
+        "prose": <score>,
+        "personal_meaning": <score>,
+        "overall": <score>
+      }
+    }
+
+    Provide scores as numerical values between 1 and 10 (1 being poor, 10 being excellent). Only return the JSON response. No extra commentary. 
     `;
     
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    return model.generateContent([prompt])
-        .then(result => result.response.text())
-        .catch(error => {
-            console.error("An error occurred while comparing poems:", error);
-            return null;
-        });
+    try {
+        const result = await model.generateContent([prompt]);
+        const responseText = result.response.text();
+        
+        // Parse the JSON response from the AI
+        const comparisonResult = JSON.parse(responseText);
+        
+        // Now you can access scores from the parsed JSON
+        console.log("Poem 1 Scores:", comparisonResult.poem_1);
+        console.log("Poem 2 Scores:", comparisonResult.poem_2);
+
+        return comparisonResult;
+    } catch (error) {
+        console.error("An error occurred while comparing poems:", error);
+        return null;
+    }
 }
+
+
 */ 
 
 // -----------------------------------------------------
