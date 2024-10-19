@@ -12,6 +12,9 @@ window.onload = function() {
         });
 };
 
+let scoreText = '';
+let poemText = '';
+
 async function fetchComparisonData() {
 
     const userInput = document.getElementById("userpoeminput").value;
@@ -32,13 +35,10 @@ async function fetchComparisonData() {
   
       const data = await response.json(); 
   
-      const resultsContainer = document.getElementById('comparison-results');
-      resultsContainer.textContent = data.formattedData;
+      scoreText = data.formattedData;
 
-      const aiPoemContainer = document.getElementById('AI-poem');
-      aiPoemContainer.textContent = data.AIPoem;
+      poemText = data.AIPoem;
 
-        
     } catch (error) {
       console.error("An error occurred while fetching comparison data:", error);
     } 
@@ -57,11 +57,15 @@ const observer = new IntersectionObserver((entries) => {
     });
 
 
-function fetchComparisonData(){
+async function scrollDown(){
+    await fetchComparisonData(); 
 
     const resultsDiv = document.getElementById("comparison-results");
     resultsDiv.innerHTML = ` 
-    <div class="bigbox"> INSERT SCORE HERE </div>
+        <div class="bigbox"> 
+            <p>${scoreText}</p>
+            <p>${poemText}</p>
+        </div>
     `;
     resultsDiv.scrollIntoView({behavior: 'smooth'});
 
