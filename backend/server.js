@@ -1,4 +1,5 @@
-const { compareUserAIPoem } = require('./test'); 
+const { compareUserAIPoem } = require('./script'); 
+const { formatPoemComparison } = require('./script'); 
 
 function createServer() {
     const http = require('http');
@@ -26,26 +27,6 @@ function createServer() {
     server.listen(port, hostname, () => {
         console.log(`Server running at http://${hostname}:${port}/`);
     });
-}
-
-function formatPoemComparison(data) {
-    let formatted = "\nComparison of Poem Scores:\n\n";
-
-    formatted += "Poem 1:\n";
-    formatted += `  Creativity: ${data.poem_1.creativity}\n`;
-    formatted += `  Originality: ${data.poem_1.originality}\n`;
-    formatted += `  Prose: ${data.poem_1.prose}\n`;
-    formatted += `  Personal Meaning: ${data.poem_1.personal_meaning}\n`;
-    formatted += `  Overall: ${data.poem_1.overall}\n`;
-
-    formatted += "\nPoem 2:\n";
-    formatted += `  Creativity: ${data.poem_2.creativity}\n`;
-    formatted += `  Originality: ${data.poem_2.originality}\n`;
-    formatted += `  Prose: ${data.poem_2.prose}\n`;
-    formatted += `  Personal Meaning: ${data.poem_2.personal_meaning}\n`;
-    formatted += `  Overall: ${data.poem_2.overall}\n`;
-
-    return formatted;
 }
 
 createServer(); 
