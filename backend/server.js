@@ -7,7 +7,7 @@ function createServer() {
     const hostname = '127.0.0.1';
     const port = 3000;
 
-    const server = http.createServer(async (req, res) => {
+    const server = http.createServer(async (_req, res) => {
         res.statusCode = 200; 
         res.setHeader('Content-Type', 'application/json'); 
 
