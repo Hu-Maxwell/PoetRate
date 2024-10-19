@@ -10,13 +10,21 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
         </style>
+        <script defer src ="app.js"></script>
         
     </head>
     <body>
-        <div class ="main">
-            <p>PoetryAI</p>
-            <button class ="button" type ="button" onclick=goToNextPage()>START</button>
-        </div>
+        <section class = "hidden">
+            <div class ="main">
+                <p>PoetryAI</p>
+                <button class ="button" type ="button" onclick=goToNextPage()>START</button>
+            </div>
+        </section>
+        <section class = "hidden">
+            <div class ="intro">
+                <p>inspirational poem insert wowowowowow </p>
+            </div>
+        </section>
         <script>
             function goToNextPage(){
                 window.location.href = 'start.html';

@@ -1,9 +1,14 @@
 body{
-    background-color: #647E7D;
     font-family: Playfair;
 }
-
+section{
+    display:grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
 .main{
+    background-color: #647E7D;
     font-size: 150px;
     font-family: Playfair;
     text-align: center;
@@ -15,7 +20,8 @@ body{
     align-items: center;   
     height: 90vh;  
 }
-.main p {
+.intro p {
+    font-size:50px;
     overflow: hidden; 
     border-right: .10em solid orange;
     white-space: nowrap; /* Keeps the content on a single line */
@@ -48,4 +54,22 @@ body{
     justify-content: center;
     cursor: pointer;
 
+}
+
+.hidden{
+    opacity: 0;
+    filter:blue(5px);
+    transform: translateX(-100%);
+    transition: all 3s;
+}
+@media(prefers-reduced-motion){
+    .hidden{
+        transition: none;
+    }
+}
+
+.show{
+    opacity: 1;
+    filter:blur(0);
+    transform: translateX(0);
 }
