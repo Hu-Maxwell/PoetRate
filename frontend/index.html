@@ -7,28 +7,28 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-        </style>
-        <script defer src ="app.js"></script>
         
     </head>
     <body>
+        <section class = "hidden">
+            <div class ="intro">
+            <div class ="static-txt">Poetry can be</div>
+                <ul class="dynamic-txt">
+                    <li><span>Emotional</span></li>
+                    <li><span>Passionate</span></li>
+                    <li><span>Romantic</span></li>
+                    <li><span>Narrative</span></li>
+                    <li><span>Subversive</span></li>
+                </ul>
+            </div>
+        </section>
         <section class = "hidden">
             <div class ="main">
                 <p>PoetryAI</p>
                 <button class ="button" type ="button" onclick=goToNextPage()>START</button>
             </div>
         </section>
-        <section class = "hidden">
-            <div class ="intro">
-                <p>inspirational poem insert wowowowowow </p>
-            </div>
-        </section>
-        <script>
-            function goToNextPage(){
-                window.location.href = 'start.html';
-            }
-        </script>
+    
+        <script defer src ="app.js"></script>
     </body>
 </html>
