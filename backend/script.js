@@ -94,9 +94,12 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
         "personal_meaning": <score>,
         "overall": <score>
       }
+      "advice" : <advice> 
     }
 
-    Scores should be numerical values between 1 and 10. Only return this JSON object, and nothing else.
+    Scores should be numerical values between 1 and 10. 
+    Limit advice to three sentences, and only about poem 1. Refer to poem 1 as "your" poem, and poem 2 as AI's poem. You should draw comparisons between the two to explain which one is better. 
+    Only return this JSON object and nothing else.
   `;
   
   try {
@@ -129,7 +132,9 @@ function formatPoemComparison(data) {
   formatted += `  Originality: ${data.poem_2.originality}\n`;
   formatted += `  Prose: ${data.poem_2.prose}\n`;
   formatted += `  Personal Meaning: ${data.poem_2.personal_meaning}\n`;
-  formatted += `  Overall: ${data.poem_2.overall}\n`;
+  formatted += `  Overall: ${data.poem_2.overall}\n\n`;
+
+  formatted += `  Overall: ${data.advice}\n`;
 
   return formatted;
 }
