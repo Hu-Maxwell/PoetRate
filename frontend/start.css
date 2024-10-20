@@ -133,9 +133,11 @@ button{
     white-space: pre-wrap;
     align-content: center;
     line-height: 1.5;
-    font-size: 15px;
+    font-size: 16px;
     padding-left: 10px;
     padding-right: 10px;
+    display:flex;
+    flex-direction: column;
 }
 
 
