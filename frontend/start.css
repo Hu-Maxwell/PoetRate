@@ -141,8 +141,9 @@ button{
     flex-direction: column;
 }
 
-#AIpoem.bigbox{
+p.bigbox{
     text-align: center;
+
 }
 
 

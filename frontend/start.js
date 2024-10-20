@@ -105,7 +105,7 @@ async function scrollDown(){
         </div>
 
         <div class="bigbox"> 
-            <p id="AIpoem">${poemText}</p>
+            <p >${poemText}</p>
         </div>
     `;
     resultsDiv.scrollIntoView({behavior: 'smooth'});
