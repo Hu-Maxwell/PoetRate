@@ -99,7 +99,8 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
     }
 
     Scores should be numerical values between 1 and 10. 
-    Limit advice to three sentences, and only about poem 1. Refer to poem 1 as "your" poem, and poem 2 as AI's poem. You should draw comparisons between the two to explain which one is better. 
+    Limit advice to three sentences, and only about poem 1. Refer to poem 1 as "your" poem, and poem 2 as AI's poem.
+    If applicable, use the AI poem to explain areas of improvement. 
     Only return this JSON object and nothing else
     `;
   
