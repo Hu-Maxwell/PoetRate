@@ -64,7 +64,7 @@ async function scrollDown(){
     const resultsDiv = document.getElementById("comparison-results");
     resultsDiv.innerHTML = ` 
         <div class="bigbox">
-            <table>
+            <table class="table1">
                 <thead>
                     <tr>
                         <th></th>

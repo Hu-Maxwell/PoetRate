@@ -141,6 +141,7 @@ button{
     flex-direction: column;
 }
 
+
 p.AIpoem{
     padding-top: 50px;
     text-align: center;
@@ -149,6 +150,12 @@ p.AIpoem{
 
 }
 
+table.table1{
+    padding-top: 50px;
+    text-align: center;
+    justify-items: center;
+    align-content: center;
+}
 
 
 
