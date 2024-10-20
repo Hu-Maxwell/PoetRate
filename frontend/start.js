@@ -66,6 +66,10 @@ async function scrollDown(){
             <p>${scoreText}</p>
             <p>${poemText}</p>
         </div>
+
+        <div class="bigbox"> 
+            <p>Score</p
+        </div>
     `;
     resultsDiv.scrollIntoView({behavior: 'smooth'});
 
