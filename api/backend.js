@@ -24,9 +24,16 @@ function createServer() {
 
     const server = http.createServer(async (req, res) => {
          // Allow CORS
-    // res.setHeader('Access-Control-Allow-Origin', 'https://poetry-i32yqzozu-hu-maxwells-projects.vercel.app'); // Allow your Vercel URL
-    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Origin', 'https://poetry-i32yqzozu-hu-maxwells-projects.vercel.app'); // Allow your Vercel URL
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    // Handle Preflight Requests (OPTIONS)
+    if (req.method === 'OPTIONS') {
+        res.writeHead(204); // No Content
+        res.end();
+        return;
+    }
         if (req.url === '/' && req.method === 'GET') {
             // serve index.html
             const indexHtml = path.join(__dirname, '../public/index.html');
@@ -47,7 +54,7 @@ function createServer() {
             const startStyle = path.join(__dirname, '../public/start.css');
             serveStaticFile(res, startStyle, 'text/css');
             
-        } else if (req.url === '/sunflower.jpg' && req.method === 'GET') {
+        } else if (req.url === '/api/backend/sunflower.jpg' && req.method === 'GET') {
             // serve the sunflower image
             const sunflowerImage = path.join(__dirname, '../public/sunflower.jpg');
             serveStaticFile(res, sunflowerImage, 'image/jpg');
