@@ -160,7 +160,7 @@ button{
 
 
 p.AIpoem{
-    padding-top: 50px;
+    padding-top: 30px;
     text-align: center;
     justify-items: center;
     align-content: center;
@@ -197,7 +197,15 @@ table.table1{
 }
 
 
+h2.AIspoem{
+    justify-content: center;
+    text-align: center;
+}
 
+h2.scoring{
+    justify-content: center;
+    text-align: center;
+}
 
 td.bold{
     font-weight: bold;
