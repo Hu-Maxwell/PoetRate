@@ -179,6 +179,8 @@ table.table1{
 .spinner{
     width: 45px;
     height: 45px;
+    border-left-color: #000;
+    color: white;
     animation: spin 2s infinite linear;
     margin: 100px auto;
     display: block;
