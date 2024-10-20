@@ -79,6 +79,7 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
 
     Format your answer strictly as a JSON object with no code blocks, no extra text, and no explanations. Use this exact structure:
 
+
     {
       "poem_1": {
         "creativity": <score>,
@@ -94,10 +95,13 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
         "personal_meaning": <score>,
         "overall": <score>
       }
+      "advice" : <advice> 
     }
 
-    Scores should be numerical values between 1 and 10. Only return this JSON object, and nothing else.
-  `;
+    Scores should be numerical values between 1 and 10. 
+    Limit advice to three sentences, and only about poem 1. Refer to poem 1 as "your" poem, and poem 2 as AI's poem. You should draw comparisons between the two to explain which one is better. 
+    Only return this JSON object and nothing else
+    `;
   
   try {
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
@@ -130,6 +134,8 @@ function formatPoemComparison(data) {
   formatted += `  Prose: ${data.poem_2.prose}\n`;
   formatted += `  Personal Meaning: ${data.poem_2.personal_meaning}\n`;
   formatted += `  Overall: ${data.poem_2.overall}\n`;
+
+  formatted += `  Advice: ${data.advice}\n`;
 
   return formatted;
 }
