@@ -24,9 +24,9 @@ function createServer() {
 
     const server = http.createServer(async (req, res) => {
          // Allow CORS
-    res.setHeader('Access-Control-Allow-Origin', 'https://poetry-i32yqzozu-hu-maxwells-projects.vercel.app'); // Allow your Vercel URL
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    // res.setHeader('Access-Control-Allow-Origin', 'https://poetry-i32yqzozu-hu-maxwells-projects.vercel.app'); // Allow your Vercel URL
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         if (req.url === '/' && req.method === 'GET') {
             // serve index.html
             const indexHtml = path.join(__dirname, '../public/index.html');
