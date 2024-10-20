@@ -104,6 +104,13 @@ button{
 
 }
 
+#submitbtn{
+    margin-right: 10px;
+}
+#startoverbtn{
+    margin-left: 15px;
+}
+
 .result-container{
     width: 100%;
     height: 90vh;
