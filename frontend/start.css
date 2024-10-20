@@ -81,6 +81,7 @@ img.generated_image{
     font-size: 45px;
     color: white;
     cursor: pointer;
+    color-scheme: white;
 }
 .questionicon a:hover{
     color: white;
