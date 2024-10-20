@@ -14,8 +14,8 @@ function selectRandomImage() {
 
   const rand = Math.floor(Math.random() * totalImages);
   const imageFileName = `image_${rand}.png`;
-  const imagePath = `public/assets/${mood}/${imageFileName}`;
-  const clientImagePath = `${imagePath}`; 
+  const imagePath = `assets/${mood}/${imageFileName}`;
+  const clientImagePath = `/${imagePath}`; 
 
   return {
       imagePath,      
@@ -26,7 +26,7 @@ function selectRandomImage() {
 // generates poem 
 async function generatePoem(imagePath) { 
   try {
-    const fsImagePath = path.join(__dirname, '..', 'public', imagePath);
+    const fsImagePath = path.join(__dirname, '..', 'frontend', imagePath);
     console.log('fsImagePath:', fsImagePath);
 
     if (!fs.existsSync(fsImagePath)) {
@@ -94,12 +94,9 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
         "personal_meaning": <score>,
         "overall": <score>
       }
-      "advice" : <advice> 
     }
 
-    Scores should be numerical values between 1 and 10. 
-    Limit advice to three sentences, and only about poem 1. Refer to poem 1 as "your" poem, and poem 2 as AI's poem. You should draw comparisons between the two to explain which one is better. 
-    Only return this JSON object and nothing else.
+    Scores should be numerical values between 1 and 10. Only return this JSON object, and nothing else.
   `;
   
   try {
@@ -132,9 +129,7 @@ function formatPoemComparison(data) {
   formatted += `  Originality: ${data.poem_2.originality}\n`;
   formatted += `  Prose: ${data.poem_2.prose}\n`;
   formatted += `  Personal Meaning: ${data.poem_2.personal_meaning}\n`;
-  formatted += `  Overall: ${data.poem_2.overall}\n\n`;
-
-  formatted += `  Overall: ${data.advice}\n`;
+  formatted += `  Overall: ${data.poem_2.overall}\n`;
 
   return formatted;
 }
@@ -185,4 +180,4 @@ module.exports = {
   saveDataToFile, 
   displayFormattedData,
   selectRandomImage
-};
+};  
