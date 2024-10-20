@@ -1,12 +1,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 body{
-    font-family: 'Playfair Display';
+    font-family: 'Playfair';
     background-color: #647e7d;
     display:grid;
     place-items: center;
     align-content: center;
     min-height: 100vh;
+}
+.animated-txt{
+    color: #fff;
+    font-size: 110px;
+    font-weight: 500;
+    line-height: 90px;
+    margin-left: 70px;
+}
+.animated-txt span{
+    position: relative;
+}
+.animated-txt span::before{
+    content: "Simple";
+    color:#C38590;  
+    animation: words 20s infinite;
+}
+
+.animated-txt span::after{
+    content: "";
+    color:#C38590;  
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: #647e7d;
+    border-left: 2px solid #C38590;
+    left:100%;
+    transform: translateX(-100%); 
+    animation: cursor .5s infinite, typing 20s steps(11) infinite;
+}
+
+@keyframes cursor{
+    to{
+        border-left: 2px solid #C38590;
+    }
+}
+
+@keyframes words{
+    0%,20%{
+        content: "Simple";
+    }
+    21%,40%{
+        content: "Cats?";
+    }
+    41%,60%{
+        content: "Easy";
+    }
+    61%,80%{
+        content: "Diverse";
+    }
+    81%,100%{
+        content: "Humorous";
+    }
+}
+
+@keyframes typing {
+   10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+    width: 0;
+   }
+   5%,20%,25%,40%,45%,60%,65%,80%,85%{
+    width:calc(100% + 8px);
+   }
 }
 section{
     display:grid;
@@ -26,69 +87,7 @@ section{
     align-items: center;   
     height: 100vh;  
 }
-.intro{
-    display: inline-flex;
-    align-items: center;
-}
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-  
-.intro .static-txt{
-    color: #fff;
-    font-size: 100px;
-    font-weight: 500;
-    line-height:100px;
-    margin-left: 70px;
-}
-.intro .dynamic-txt{
-    margin-left: 15px;
-    line-height: 85px;
-    height:80px;
-    overflow: hidden;
-    font-style: italic;
-}
-.dynamic-txt li{
-    list-style: none;
-    font-size: 90px;
-    font-weight: 500;
-    color: #C38590;
-    position: relative;
-    font-style: italic;
-    top:0;
-    animation: slide 6s steps(4) infinite;
-}
-@keyframes slide {
-    100%{
-        top:-370px;
-    }
-}
-.dynamic-txt li span{
-    position: relative;
-}
-.dynamic-txt li span::after{
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    border-left: 2px solid;
-    left:0;
-    background:#647e7d ;
-    animation:typing 1.5s steps(13) infinite;
-    font-style: italic;
-}
-@keyframes typing {
-    100%{
-        left: 100%;
-        margin: 0 -55px 0 55px;
-    }
-}
-  /* The typewriter cursor effect */
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: pink; }
-  }
+
 
 .button{
     font-size: 20px;
