@@ -17,7 +17,6 @@ section{
 .main{
     background-color: #647E7D;
     font-size: 150px;
-    font-family: Playfair;
     text-align: center;
     color: #FDEFE4;
     font-weight: bold;
@@ -25,7 +24,7 @@ section{
     flex-direction: column;    
     justify-content: center;   
     align-items: center;   
-    height: 90vh;  
+    height: 100vh;  
 }
 .intro{
     display: inline-flex;
@@ -39,22 +38,24 @@ section{
 .intro .static-txt{
     color: #fff;
     font-size: 100px;
-    font-weight: 400;
-    line-height: 90px;
+    font-weight: 500;
+    line-height:100px;
     margin-left: 70px;
 }
 .intro .dynamic-txt{
     margin-left: 15px;
-    line-height: 90px;
+    line-height: 85px;
     height:80px;
     overflow: hidden;
+    font-style: italic;
 }
 .dynamic-txt li{
     list-style: none;
-    font-size: 100px;
+    font-size: 90px;
     font-weight: 500;
     color: #C38590;
     position: relative;
+    font-style: italic;
     top:0;
     animation: slide 6s steps(4) infinite;
 }
@@ -75,17 +76,18 @@ section{
     left:0;
     background:#647e7d ;
     animation:typing 1.5s steps(13) infinite;
+    font-style: italic;
 }
 @keyframes typing {
     100%{
-        left:100%;
-        margin: 0 -35px 0 35px;
+        left: 100%;
+        margin: 0 -55px 0 55px;
     }
 }
   /* The typewriter cursor effect */
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: white; }
+    50% { border-color: pink; }
   }
 
 .button{
