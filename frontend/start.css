@@ -197,7 +197,10 @@ table.table1{
 }
 
 
-
+h2.AIspoem{
+    justify-content: center;
+    text-align: center;
+}
 
 td.bold{
     font-weight: bold;
