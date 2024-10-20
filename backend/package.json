@@ -4,8 +4,8 @@
     "dotenv": "^16.4.5"
   },
   "scripts": {
-    "build": "tsc",
-    "start": "node server.js"
+    "build": "npm run compile", 
+    "start": "node server.js" 
   }
 }
 
