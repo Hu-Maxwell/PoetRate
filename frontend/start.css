@@ -142,7 +142,7 @@ button{
 }
 
 #AI.bigbox{
-    align-items: center;
+    justify-content: center;
 }
 
 
