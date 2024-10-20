@@ -77,12 +77,11 @@ function createServer() {
                     console.log("Received image path:", imagePath);
 
                     const comparisonResults = await compareUserAIPoem(userPoem, imagePath);
-                    const formattedData = formatPoemComparison(comparisonResults.comparisonResults);
 
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
                     res.end(JSON.stringify({
-                        formattedData: formattedData,
+                        formattedData: comparisonResults.comparisonResults,
                         AIPoem: comparisonResults.AIPoem
                     }));
         

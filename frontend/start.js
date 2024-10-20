@@ -12,7 +12,7 @@ window.onload = function() {
         });
 };
 
-let scoreText = '';
+let scoreText = {};
 let poemText = '';
 
 async function fetchComparisonData() {
@@ -59,21 +59,53 @@ const observer = new IntersectionObserver((entries) => {
 
 async function scrollDown(){
     await fetchComparisonData(); 
+    let proseScore = scoreText.poem_1.prose; 
 
     const resultsDiv = document.getElementById("comparison-results");
     resultsDiv.innerHTML = ` 
-        <div class="bigbox"> 
-            <ul id="scoreText">${scoreText}
-                <li>${scoreItem1}</li>
-                <li>${scoreItem2}</li>
-                <li>${scoreItem3}</li>
-                <li>${scoreItem4}</li>
-                </ul>
-            <p>${poemText}</p>
+        <div class="bigbox">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Your Poem</th>
+                        <th>AI's Poem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Creativity</td>
+                        <td>${scoreText.poem_1.creativity}</td>
+                        <td>${scoreText.poem_2.creativity}</td>
+                    </tr>
+                    <tr>
+                        <td>Originality</td>
+                        <td>${scoreText.poem_1.originality}</td>
+                        <td>${scoreText.poem_2.originality}</td>
+                    </tr>
+                    <tr>
+                        <td>Prose</td>
+                        <td>${scoreText.poem_1.prose}</td>
+                        <td>${scoreText.poem_2.prose}</td>
+                    </tr>
+                    <tr>
+                        <td>Personal Meaning</td>
+                        <td>${scoreText.poem_1.personal_meaning}</td>
+                        <td>${scoreText.poem_2.personal_meaning}</td>
+                    </tr>
+                    <tr>
+                        <td>Overall</td>
+                        <td>${scoreText.poem_1.overall}</td>
+                        <td>${scoreText.poem_2.overall}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>${scoreText.advice}</p>
         </div>
 
         <div class="bigbox"> 
-            <p>Score</p>
+            <p>${poemText}</p>
         </div>
     `;
     resultsDiv.scrollIntoView({behavior: 'smooth'});

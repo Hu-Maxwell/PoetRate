@@ -119,23 +119,23 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
 }
 
 function formatPoemComparison(data) {
-  let formatted = "\nComparison of Poem Scores:\n\n";
+  let formatted = "";
 
-  formatted += "Poem 1:\n";
-  formatted += `  Creativity: ${data.poem_1.creativity}\n`;
-  formatted += `  Originality: ${data.poem_1.originality}\n`;
-  formatted += `  Prose: ${data.poem_1.prose}\n`;
-  formatted += `  Personal Meaning: ${data.poem_1.personal_meaning}\n`;
-  formatted += `  Overall: ${data.poem_1.overall}\n`;
+  formatted += "Your Poem:\n";
+  formatted += `• Creativity: ${data.poem_1.creativity}\n`;
+  formatted += `• Originality: ${data.poem_1.originality}\n`;
+  formatted += `• Prose: ${data.poem_1.prose}\n`;
+  formatted += `• Personal Meaning: ${data.poem_1.personal_meaning}\n`;
+  formatted += `• Overall: ${data.poem_1.overall}\n`;
 
-  formatted += "\nPoem 2:\n";
-  formatted += `  Creativity: ${data.poem_2.creativity}\n`;
-  formatted += `  Originality: ${data.poem_2.originality}\n`;
-  formatted += `  Prose: ${data.poem_2.prose}\n`;
-  formatted += `  Personal Meaning: ${data.poem_2.personal_meaning}\n`;
-  formatted += `  Overall: ${data.poem_2.overall}\n`;
+  formatted += "\nAI's Poem:\n";
+  formatted += `• Creativity: ${data.poem_2.creativity}\n`;
+  formatted += `• Originality: ${data.poem_2.originality}\n`;
+  formatted += `• Prose: ${data.poem_2.prose}\n`;
+  formatted += `• Personal Meaning: ${data.poem_2.personal_meaning}\n`;
+  formatted += `• Overall: ${data.poem_2.overall}\n\n`;
 
-  formatted += `  Advice: ${data.advice}\n`;
+  formatted += `${data.advice}\n`;
 
   return formatted;
 }
