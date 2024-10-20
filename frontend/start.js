@@ -65,6 +65,7 @@ async function scrollDown(){
     resultsDiv.innerHTML = ` 
 
     <div class="bigbox"> 
+            <h2 class="AIspoem">AI-generated Poem</h2>
             <p class="AIpoem">${poemText}</p>
         </div>
         <div class="bigbox">
