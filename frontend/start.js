@@ -63,6 +63,10 @@ async function scrollDown(){
 
     const resultsDiv = document.getElementById("comparison-results");
     resultsDiv.innerHTML = ` 
+
+    <div class="bigbox"> 
+            <p class="AIpoem">${poemText}</p>
+        </div>
         <div class="bigbox">
             <table class="table1">
                 <thead>
@@ -104,9 +108,7 @@ async function scrollDown(){
             <p>${scoreText.advice}</p>
         </div>
 
-        <div class="bigbox"> 
-            <p class="AIpoem">${poemText}</p>
-        </div>
+        
     `;
     resultsDiv.scrollIntoView({behavior: 'smooth'});
 
