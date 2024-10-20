@@ -70,6 +70,7 @@ async function scrollDown(){
         </div>
         <div class="bigbox">
             <table class="table1">
+            <h2 class="scoring">Scoring</h2>
                 <thead>
                     <tr>
                         <th></th>
