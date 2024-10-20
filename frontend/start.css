@@ -68,6 +68,11 @@ img.generated_image{
     gap: 30px;
 }
 
+#random-image {
+    height: 390px; 
+    width: auto;  
+}
+
 
 .questionicon{
     position: absolute;

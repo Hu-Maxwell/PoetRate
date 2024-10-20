@@ -10,7 +10,7 @@ const fileManager = new GoogleAIFileManager(process.env.API_KEY);
 
 function selectRandomImage() {
   const mood = "happy"; 
-  const totalImages = 4; 
+  const totalImages = 18; 
 
   const rand = Math.floor(Math.random() * totalImages);
   const imageFileName = `image_${rand}.png`;
