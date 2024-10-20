@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 body{
-    font-family: 'Playfair';
+    font-family: 'Playfair Display';
     background-color: #647e7d;
     display:grid;
     place-items: center;
@@ -10,10 +10,11 @@ body{
 }
 .animated-txt{
     color: #fff;
-    font-size: 110px;
+    font-size: 90px;
     font-weight: 500;
     line-height: 90px;
     margin-left: 70px;
+    font-style: italic;
 }
 .animated-txt span{
     position: relative;
@@ -32,7 +33,7 @@ body{
     height: 100%;
     background-color: #647e7d;
     border-left: 2px solid #C38590;
-    left:100%;
+    left:103%;
     transform: translateX(-100%); 
     animation: cursor .5s infinite, typing 20s steps(11) infinite;
 }
@@ -45,19 +46,19 @@ body{
 
 @keyframes words{
     0%,20%{
-        content: "Simple";
+        content: "SIMPLE.";
     }
     21%,40%{
-        content: "Cats?";
+        content: "CATS?";
     }
     41%,60%{
-        content: "Easy";
+        content: "EASY.";
     }
     61%,80%{
-        content: "Diverse";
+        content: "DIVERSE.";
     }
     81%,100%{
-        content: "Humorous";
+        content: "HUMOROUS.";
     }
 }
 
