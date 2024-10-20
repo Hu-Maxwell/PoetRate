@@ -14,7 +14,7 @@ function selectRandomImage() {
 
   const rand = Math.floor(Math.random() * totalImages);
   const imageFileName = `image_${rand}.png`;
-  const imagePath = `assets/${mood}/${imageFileName}`;
+  const imagePath = `public/assets/${mood}/${imageFileName}`;
   const clientImagePath = `/${imagePath}`; 
 
   return {
