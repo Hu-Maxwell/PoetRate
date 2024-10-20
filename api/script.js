@@ -14,8 +14,8 @@ function selectRandomImage() {
 
   const rand = Math.floor(Math.random() * totalImages);
   const imageFileName = `image_${rand}.png`;
-  const imagePath = `assets/${mood}/${imageFileName}`;
-  const clientImagePath = `/${imagePath}`; 
+  const imagePath = `public/assets/${mood}/${imageFileName}`;
+  const clientImagePath = `${imagePath}`; 
 
   return {
       imagePath,      
@@ -26,7 +26,7 @@ function selectRandomImage() {
 // generates poem 
 async function generatePoem(imagePath) { 
   try {
-    const fsImagePath = path.join(__dirname, '..', 'frontend', imagePath);
+    const fsImagePath = path.join(__dirname, '..', 'public', imagePath);
     console.log('fsImagePath:', fsImagePath);
 
     if (!fs.existsSync(fsImagePath)) {

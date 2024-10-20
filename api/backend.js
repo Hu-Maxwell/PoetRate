@@ -23,39 +23,50 @@ function createServer() {
     const port = 3000;
 
     const server = http.createServer(async (req, res) => {
+         // Allow CORS
+    res.setHeader('Access-Control-Allow-Origin', 'https://poetry-i32yqzozu-hu-maxwells-projects.vercel.app'); // Allow your Vercel URL
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    // Handle Preflight Requests (OPTIONS)
+    if (req.method === 'OPTIONS') {
+        res.writeHead(204); // No Content
+        res.end();
+        return;
+    }
         if (req.url === '/' && req.method === 'GET') {
             // serve index.html
-            const indexHtml = path.join(__dirname, '../frontend/index.html');
+            const indexHtml = path.join(__dirname, '../public/index.html');
             serveStaticFile(res, indexHtml, 'text/html');
 
         } else if (req.url === '/style.css' && req.method === 'GET') {
             // serve style.css
-            const indexStyle = path.join(__dirname, '../frontend/style.css');
+            const indexStyle = path.join(__dirname, '../public/style.css');
             serveStaticFile(res, indexStyle, 'text/css');
 
         } else if (req.url === '/start.html' && req.method === 'GET') {
             // serve start.html 
-            const startHtml = path.join(__dirname, '../frontend/start.html');
+            const startHtml = path.join(__dirname, '../public/start.html');
             serveStaticFile(res, startHtml, 'text/html');
 
         } else if (req.url === '/start.css' && req.method === 'GET') {
             // serve start.css
-            const startStyle = path.join(__dirname, '../frontend/start.css');
+            const startStyle = path.join(__dirname, '../public/start.css');
             serveStaticFile(res, startStyle, 'text/css');
             
-        } else if (req.url === '/sunflower.jpg' && req.method === 'GET') {
+        } else if (req.url === '/api/backend/sunflower.jpg' && req.method === 'GET') {
             // serve the sunflower image
-            const sunflowerImage = path.join(__dirname, '../frontend/sunflower.jpg');
+            const sunflowerImage = path.join(__dirname, '../public/sunflower.jpg');
             serveStaticFile(res, sunflowerImage, 'image/jpg');
             
         } else if (req.url === '/start.js' && req.method === 'GET') {
             // serve start.js file
-            const startJsPath = path.join(__dirname, '../frontend/start.js');
+            const startJsPath = path.join(__dirname, '../public/start.js');
             serveStaticFile(res, startJsPath, 'application/javascript');
 
         } else if (req.url === '/help.html' && req.method === 'GET') {
             // serve help.html 
-            const helpHtml = path.join(__dirname, '../frontend/help.html');
+            const helpHtml = path.join(__dirname, '../public/help.html');
             serveStaticFile(res, helpHtml, 'text/html');
 
         } else if (req.url === '/get-comparison' && req.method === 'POST') {
@@ -101,7 +112,7 @@ function createServer() {
         
         } else if (req.url.startsWith('/assets/') && req.method === 'GET') {
             // serve assets folder
-            const filePath = path.join(__dirname, '../frontend', req.url);
+            const filePath = path.join(__dirname, '../public', req.url);
             const extname = String(path.extname(filePath)).toLowerCase();
             const mimeTypes = {
                 '.png': 'image/png',
@@ -112,12 +123,12 @@ function createServer() {
         
         } else if (req.url === '/app.js' && req.method === 'GET') {
             // serve app.js file
-            const startJsPath = path.join(__dirname, '../frontend/app.js');
+            const startJsPath = path.join(__dirname, '../public/app.js');
             serveStaticFile(res, startJsPath, 'application/javascript');
         
         } else if (req.url === '/help.css' && req.method === 'GET') {
             // serve start.css
-            const startStyle = path.join(__dirname, '../frontend/help.css');
+            const startStyle = path.join(__dirname, '../public/help.css');
             serveStaticFile(res, startStyle, 'text/css');
         
         } else {
