@@ -68,33 +68,33 @@ async function scrollDown(){
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Your Poem</th>
-                        <th>AI's Poem</th>
+                        <th >Your Poem</th>
+                        <th >AI's Poem</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Creativity</td>
+                        <td class="bold">Creativity</td>
                         <td>${scoreText.poem_1.creativity}</td>
                         <td>${scoreText.poem_2.creativity}</td>
                     </tr>
                     <tr>
-                        <td>Originality</td>
+                        <td class="bold">Originality</td>
                         <td>${scoreText.poem_1.originality}</td>
                         <td>${scoreText.poem_2.originality}</td>
                     </tr>
                     <tr>
-                        <td>Prose</td>
+                        <td class="bold">Prose</td>
                         <td>${scoreText.poem_1.prose}</td>
                         <td>${scoreText.poem_2.prose}</td>
                     </tr>
                     <tr>
-                        <td>Personal Meaning</td>
+                        <td class="bold">Personal Meaning</td>
                         <td>${scoreText.poem_1.personal_meaning}</td>
                         <td>${scoreText.poem_2.personal_meaning}</td>
                     </tr>
                     <tr>
-                        <td>Overall</td>
+                        <td class="bold">Overall</td>
                         <td>${scoreText.poem_1.overall}</td>
                         <td>${scoreText.poem_2.overall}</td>
                     </tr>
