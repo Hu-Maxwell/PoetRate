@@ -7,7 +7,7 @@ function serveStaticFile(res, filePath, contentType) {
     fs.readFile(filePath, (err, data) => {
         if (err) {
             res.statusCode = 500;
-            res.end("An error occurred while loading the file.");
+            res.end("An error occurred.");
         } else {
             res.statusCode = 200;
             res.setHeader('Content-Type', contentType);
@@ -78,6 +78,7 @@ function createServer() {
 
                     const comparisonResults = await compareUserAIPoem(userPoem, imagePath);
 
+                    // the server gets the json object and AI poem seperately
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
                     res.end(JSON.stringify({

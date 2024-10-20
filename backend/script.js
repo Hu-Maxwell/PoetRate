@@ -104,6 +104,7 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
     `;
   
   try {
+    // returns a json object to the frontend
     const genAI = new GoogleGenerativeAI(process.env.API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     const result = await model.generateContent(prompt);
@@ -149,6 +150,7 @@ let ties = 0;
 let winRate = 0.0; 
 
 // update saveData so that it's saved even after reload
+// unused function
 function saveDataToFile(data) {
   if (data.poem_1.overall > data.poem_2.overall) {
     userWins++; 
