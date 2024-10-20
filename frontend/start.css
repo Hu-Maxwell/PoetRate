@@ -142,6 +142,7 @@ button{
 }
 
 p.AIpoem{
+    padding-top: 50px;
     text-align: center;
     justify-items: center;
     align-content: center;
