@@ -108,7 +108,7 @@ button{
     margin-right: 10px;
 }
 #startoverbtn{
-    margin-left: 15px;
+    margin-left: 25px;
 }
 
 .result-container{
@@ -121,7 +121,7 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 70px;
+    gap: 100px;
     background-color: linear-gradient(454deg,#FDEFE4, #C38590 );
 }
 
