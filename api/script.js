@@ -26,7 +26,7 @@ function selectRandomImage() {
 // generates poem 
 async function generatePoem(imagePath) { 
   try {
-    const fsImagePath = path.join(__dirname, '..', 'frontend', imagePath);
+    const fsImagePath = path.join(__dirname, '..', 'public', imagePath);
     console.log('fsImagePath:', fsImagePath);
 
     if (!fs.existsSync(fsImagePath)) {
