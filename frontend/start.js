@@ -120,6 +120,16 @@ async function scrollDown(){
 
 }
 
+document.getElementById("submitbtn").addEventListener("click", function(){
+    document.querySelector('.spinner').style.display = 'block';
+
+    setTimeout(function(){
+        document.querySelector('.spinner').style.display = 'none';
+
+        scrollDown();
+    },3000);
+    });
+
 function startOver(){
     document.getElementById('userpoeminput').value = '';
     regenerateImage();
