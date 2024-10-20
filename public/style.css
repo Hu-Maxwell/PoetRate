@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 body{
     font-family: Playfair;
     background-color: #647e7d;
+    display:grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
 }
 section{
     display:grid;
@@ -21,21 +26,61 @@ section{
     align-items: center;   
     height: 90vh;  
 }
-.intro p {
-    font-size:50px;
-    overflow: hidden; 
-    border-right: .10em solid orange;
-    white-space: nowrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    animation: 
-    typing 4.0s steps(40, end),
-    blink-caret .80s step-end infinite;
+.intro{
+    display: inline-flex;
+    align-items: center;
 }
 @keyframes typing {
     from { width: 0 }
     to { width: 100% }
 }
   
+.intro .static-txt{
+    color: #fff;
+    font-size: 100px;
+    font-weight: 400;
+    line-height: 90px;
+    margin-left: 70px;
+}
+.intro .dynamic-txt{
+    margin-left: 15px;
+    line-height: 90px;
+    height:80px;
+    overflow: hidden;
+}
+.dynamic-txt li{
+    list-style: none;
+    font-size: 100px;
+    font-weight: 500;
+    color: #C38590;
+    position: relative;
+    top:0;
+    animation: slide 6s steps(4) infinite;
+}
+@keyframes slide {
+    100%{
+        top:-370px;
+    }
+}
+.dynamic-txt li span{
+    position: relative;
+}
+.dynamic-txt li span::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-left: 2px solid;
+    left:0;
+    background:#647e7d ;
+    animation:typing 1.5s steps(13) infinite;
+}
+@keyframes typing {
+    100%{
+        left:100%;
+        margin: 0 -35px 0 35px;
+    }
+}
   /* The typewriter cursor effect */
 @keyframes blink-caret {
     from, to { border-color: transparent }
@@ -56,11 +101,13 @@ section{
     cursor: pointer;
 
 }
-
+.button:hover{
+    background-color: #FDEFE4;
+    color:#C38590;
+}
 .hidden{
     opacity: 0;
     filter:blue(5px);
-    transform: translateX(-100%);
     transition: all 3s;
 }
 @media(prefers-reduced-motion){
