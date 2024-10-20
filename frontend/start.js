@@ -1,7 +1,5 @@
-
-
 window.onload = function() {
-    fetch('https://poetry-i32yqzozu-hu-maxwells-projects.vercel.app/get-random-image')
+    fetch('http://127.0.0.1:3000/get-random-image')
         .then(response => response.json())
         .then(data => {
             const clientImagePath = data.imagePath;
@@ -24,7 +22,7 @@ async function fetchComparisonData() {
     const imagePath = clientImagePath.substring(1); 
   
     try {
-      const response = await fetch('https://poetry-i32yqzozu-hu-maxwells-projects.vercel.app/get-comparison', {
+      const response = await fetch('http://127.0.0.1:3000/get-comparison', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +84,7 @@ function startOver(){
 }
 
 function regenerateImage() {
-    fetch('https://poetry-i32yqzozu-hu-maxwells-projects.vercel.app/get-random-image')
+    fetch('http://127.0.0.1:3000/get-random-image')
         .then(response => response.json())
         .then(data => {
             const clientImagePath = data.imagePath;
