@@ -111,6 +111,10 @@ button{
     margin-left: 25px;
 }
 
+.button_gap{
+    margin-top: 15px;
+}
+
 .result-container{
     width: 100%;
     height: 90vh;
