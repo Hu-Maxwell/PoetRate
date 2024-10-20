@@ -118,6 +118,7 @@ async function compareUserAIPoem(userPoem, imagePath) { // compareUserAIPoem(dif
   }
 }
 
+// useless function
 function formatPoemComparison(data) {
   let formatted = "";
 
