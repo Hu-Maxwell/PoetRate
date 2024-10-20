@@ -141,6 +141,10 @@ button{
     flex-direction: column;
 }
 
+#AI.bigbox{
+    align-content: center;
+}
+
 
 
 
